@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>kelas 9H</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XI.H | SMPN 01 Cimanggu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #bae6fd; color: #0f172a; overflow-x: hidden; }
+    .white-card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .card { transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(14,165,233,0.15); }
+
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease-out; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+
+    #loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      transition: opacity 0.5s ease;
+    }
+    #loader.hide { opacity: 0; pointer-events: none; }
+    .welcome-text { font-size: 2.2rem; font-weight: 800; color: white; animation: pulse 1.4s infinite; }
+    @keyframes pulse { 50% { transform: scale(1.04); } }
+
+    /* Side panel for jadwal */
+    .side-container { display: flex; gap: 1rem; overflow: hidden; }
+    #jadwal-panel {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #jadwal-panel.show {
+      width: 100%;
+      opacity: 1;
+    }
+    @media (min-width: 768px) {
+      #jadwal-panel.show { width: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="welcome-text">Welcome to</div>
+    <div class="text-5xl font-extrabold mt-2 text-white">web IX.H</div>
+    <div class="mt-5 w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+  </div>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col items-center justify-center px-4 pt-12 text-center bg-gradient-to-b from-sky-100 to-sky-50">
+    <img src="Screenshot_20261020-164235.jpg" alt="Logo" class="w-28 h-28 rounded-2xl mb-6 shadow-md" />
+    <p class="text-sm text-sky-700 fade-in"></p>
+    <h2 class="text-lg font-semibold tracking-widest text-sky-800 mt-1 fade-in"></h2>
+    <h1 class="text-6xl md:text-7xl font-extrabold text-sky-900 mt-2 fade-in">XI.H</h1>
+    <div class="white-card rounded-full px-8 py-3 flex gap-8 text-2xl font-bold mt-8 fade-in">
+      <span class="text-sky-600">16</span>
+      <span class="text-sky-600">16</span>
+      <span class="text-sky-900">32</span>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="px-4 py-10">
+    <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+      <a href="https://tiktok.com/@hiyeeyy_9.8" class="white-card card rounded-2xl p-6 flex flex-col items-center gap-3 aspect-square fade-in">
+        <i class="fab fa-tiktok text-3xl text-sky-600"></i>
+        <span class="font-semibold text-sm text-center">TikTok<br><span class="text-xs font-normal text-slate-500">Kelas</span></span>
+      </a>
+      <a href="https://instagram.com/stitch.class?xtok=MWczejF3eDBlbGE5bQ%3D%3D" class="white-card card rounded-2xl p-6 flex flex-col items-center gap-3 aspect-square fade-in">
+        <i class="fab fa-instagram text-3xl text-sky-600"></i>
+        <span class="font-semibold text-sm text-center">Instagram<br><span class="text-xs font-normal text-slate-500">Kelas</span></span>
+      </a>
+      <a href="#struktur" onclick="showPanel('struktur')" class="white-card card rounded-2xl p-6 flex flex-col items-center gap-3 aspect-square fade-in">
+        <i class="fas fa-sitemap text-3xl text-sky-600"></i>
+        <span class="font-semibold text-sm text-center">Struktur<br><span class="text-xs font-normal text-slate-500">Kelas</span></span>
+      </a>
+      <a href="javascript:void(0)" onclick="showPanel('jadwal')" class="white-card card rounded-2xl p-6 flex flex-col items-center gap-3 aspect-square fade-in">
+        <i class="fas fa-calendar-alt text-3xl text-sky-600"></i>
+        <span class="font-semibold text-sm text-center">Jadwal<br><span class="text-xs font-normal text-slate-500">Kegiatan</span></span>
+      </a>
+      <a href="#galeri" class="white-card card rounded-2xl p-6 flex flex-col items-center gap-3 aspect-square fade-in">
+        <i class="fas fa-images text-3xl text-sky-600"></i>
+        <span class="font-semibold text-sm text-center">Galeri<br><span class="text-xs font-normal text-slate-500">Kelas</span></span>
+      </a>
+      <a href="#tugas" class="white-card card rounded-2xl p-6 flex flex-col items-center gap-3 aspect-square fade-in">
+        <i class="fas fa-tasks text-3xl text-sky-600"></i>
+        <span class="font-semibold text-sm text-center">Tugas<br><span class="text-xs font-normal text-slate-500">Kelas</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Struktur & Jadwal -->
+  <section id="struktur" class="py-12 px-4">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-sky-900">
+        <span id="tab-struktur" onclick="showPanel('struktur')" class="cursor-pointer hover:text-sky-600 font-bold">Struktur</span>
+        <span class="mx-2 text-sky-400">&</span>
+        <span id="tab-jadwal" onclick="showPanel('jadwal')" class="cursor-pointer hover:text-sky-600">Jadwal</span>
+      </h2>
+      <div class="w-16 h-1 bg-sky-500 mx-auto mt-2 rounded"></div>
+    </div>
+
+    <div class="max-w-lg mx-auto">
+      <!-- Struktur Panel -->
+      <div id="panel-struktur" class="fade-in">
+        <div class="space-y-5 text-center">
+          <div>
+            <p class="text-sm text-slate-500">Wali Kelas</p>
+            <div class="white-card inline-block px-5 py-2 rounded-full mt-1 font-medium">cucu c, s.pd</div>
+          </div>
+          <div class="flex justify-center gap-8">
+            <div>
+              <p class="text-sm">Ketua</p>
+              <div class="white-card px-4 py-1 rounded-full mt-1">H.Azam</div>
+            </div>
+            <div>
+              <p class="text-sm">Wakil</p>
+              <div class="white-card px-4 py-1 rounded-full mt-1">Kiki.O.W</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <p class="mb-1">Sekretaris</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Zahwa</div>
+              <div class="white-card px-3 py-1 rounded-full">Quinza</div>
+            </div>
+            <div>
+              <p class="mb-1">Bendahara</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Veshadiva</div>
+              <div class="white-card px-3 py-1 rounded-full">Putry</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 text-sm pt-2">
+            <div>
+              <p class="mb-1">S.Akademis</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Afif</div>
+            </div>
+            <div>
+              <p class="mb-1">S.Akademis</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Siyibil</div>
+            </div>
+            <div>
+              <p class="mb-1">S.Olahraga</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Zaidan</div>
+              <div class="white-card px-3 py-1 rounded-full">Dullah</div>
+              <div class="white-card px-3 py-1 rounded-full">Danis</div>
+              <div class="white-card px-3 py-1 rounded-full">Tio</div>
+              <div class="white-card px-3 py-1 rounded-full">Neimar</div>
+              <div class="white-card px-3 py-1 rounded-full">Dika</div>
+            </div>
+            <div>
+              <p class="mb-1">S.Keagamaan</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Khaila</div>
+              <div class="white-card px-3 py-1 rounded-full">Lattifah</div>
+              <div class="white-card px-3 py-1 rounded-full">Rexi</div>
+              <div class="white-card px-3 py-1 rounded-full">Zia</div>
+              <div class="white-card px-3 py-1 rounded-full">Fela</div>
+              <div class="white-card px-3 py-1 rounded-full">Syafa</div>
+            </div>
+            
+            
+            <div>
+              <p class="mb-1">S.Kebersihan</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Riski</div>
+              <div class="white-card px-3 py-1 rounded-full">Livia</div>
+              <div class="white-card px-3 py-1 rounded-full">Chelsia</div>
+              <div class="white-card px-3 py-1 rounded-full">Nurul</div>
+              <div class="white-card px-3 py-1 rounded-full">Gio</div>
+              <div class="white-card px-3 py-1 rounded-full">Fikri</div>
+            </div>
+            
+            
+            
+            
+            <div>
+              <p class="mb-1">S.Keamanan</p>
+              <div class="white-card px-3 py-1 rounded-full mb-1">Raihan</div>
+              <div class="white-card px-3 py-1 rounded-full">Kila</div>
+              <div class="white-card px-3 py-1 rounded-full">Azmi</div>
+              <div class="white-card px-3 py-1 rounded-full">Imel</div>
+              <div class="white-card px-3 py-1 rounded-full">Najwa</div>
+              <div class="white-card px-3 py-1 rounded-full">Ridwan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jadwal Panel -->
+      <div id="panel-jadwal" class="hidden">
+        <div class="white-card rounded-2xl overflow-hidden">
+          <div class="bg-sky-100 py-2 text-center font-semibold text-sm text-sky-800">Jadwal plajaran</div>
+          <div class="divide-y text-sm">
+            <div class="grid grid-cols-2 py-2.5 px-4"><div class="font-medium">Senin</div><div class="whitespace-pre-line">IPA
+              MTK
+              B.INDO
+             
+            </div></div>
+            <div class="grid grid-cols-2 py-2.5 px-4"><div class="font-medium">Selasa</div><div class="whitespace-pre-line">B.ING
+              TIK
+              IPS
+              IPA
+            </div></div>
+            <div class="grid grid-cols-2 py-2.5 px-4"><div class="font-medium">Rabu</div><div class="whitespace-pre-line">B.JAWA
+              PAG
+              PAN
+              B.ING
+            </div></div>
+            <div class="grid grid-cols-2 py-2.5 px-4"><div class="font-medium">Kamis</div><div class="whitespace-pre-line">B.INDO
+              PENJAS
+              PAG
+            </div></div>
+            <div class="grid grid-cols-2 py-2.5 px-4"><div class="font-medium">Jumat</div><div class="whitespace-pre-line">SBD
+              MTK
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  <section id="galeri" class="py-12 px-4 bg-sky-50">
+    <h3 class="text-2xl font-bold text-center mb-6 text-sky-900 fade-in">Galeri Kelas</h3>
+    <div class="max-w-lg mx-auto space-y-4">
+      <div class="aspect-video white-card rounded-xl flex items-center justify-center fade-in"><img src="IMG-20260831-WA0032.jpg" alt="Foto Proyek" style="aspect-ratio: 16/9; width: 100%; object-fit: cover; background: #eee;">
+<span class="text-slate-400 text-sm"></span></div>
+      <div class="aspect-video white-card rounded-xl flex items-center justify-center fade-in"><img src="q.jpg" alt="Foto Proyek" style="aspect-ratio: 16/9; width: 100%; object-fit: cover; background: #eee;">
+<span class="text-slate-400 text-sm"></span></div>
+      <div class="aspect-video white-card rounded-xl flex items-center justify-center fade-in"><img src="o.jpg" alt="Foto Proyek" style="aspect-ratio: 16/9; width: 100%; object-fit: cover; background: #eee;">
+<span class="text-slate-400 text-sm"></span></div>
+      <div id="more-gallery" class="hidden space-y-4">
+        <div class="aspect-video white-card rounded-xl flex items-center justify-center"><img src="f.jpg" alt="Foto Proyek" style="aspect-ratio: 16/9; width: 100%; object-fit: cover; background: #eee;">
+<span class="text-slate-400 text-sm"></span></div>
+        <div class="aspect-video white-card rounded-xl flex items-center justify-center"><img src="c.jpg" alt="Foto Proyek" style="aspect-ratio: 16/9; width: 100%; object-fit: cover; background: #eee;">
+<span class="text-slate-400 text-sm"></span></div>
+      </div>
+      <button id="galeri-btn" onclick="toggleGaleri()" class="w-full white-card py-3 rounded-full font-semibold text-sky-700 fade-in">Lihat gambar lain</button>
+    </div>
+  </section>
+  
+       <!-- Tugas -->
+  <section id="tugas" class="py-12 px-4">
+    <h3 class="text-2xl font-bold text-center mb-6 text-sky-900 fade-in">Tugas</h3>
+    <div class="max-w-lg mx-auto white-card rounded-2xl overflow-hidden fade-in">
+      <div class="grid grid-cols-2 bg-sky-50 py-2 text-center font-semibold text-sm text-sky-800">
+        <div>Hari</div><div>Tugas</div>
+      </div>
+      <div class="divide-y text-sm">
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Senin</div><div class="whitespace-pre-line">sabar<br></div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Selasa</div><div class="whitespace-pre-line">sabar</div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Rabu</div><div class="whitespace-pre-line">sabar</div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Kamis</div><div class="whitespace-pre-line">sabar</div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Jumat</div><div class="whitespace-pre-line">sabar</div></div>
+      </div>
+    </div>
+  </section>
+  
+    <!-- Tugas -->
+  <section id="tugas" class="py-12 px-4">
+    <h3 class="text-2xl font-bold text-center mb-6 text-sky-900 fade-in">Tugas Piket</h3>
+    <div class="max-w-lg mx-auto white-card rounded-2xl overflow-hidden fade-in">
+      <div class="grid grid-cols-2 bg-sky-50 py-2 text-center font-semibold text-sm text-sky-800">
+        <div>Hari</div><div>tugas piket</div>
+      </div>
+      <div class="divide-y text-sm">
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Senin</div><div class="whitespace-pre-line">Afif<br>Bastian<br>Denis<br>Rexi<br>Syibil<br>Livia<br>Chelsia</div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Selasa</div><div class="whitespace-pre-line">Azmi<br>Putry<br>Fikri<br>Raihan<br>Syafa<br>Zahwa</div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Rabu</div><div class="whitespace-pre-line">Zaidan<br>Azam<br>Kiki<br>kila<br>Quinza<br>Diva<br>Ridwan</div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Kamis</div><div class="whitespace-pre-line">Gio<br>Riski<br>Dullah<br>Nurul<br>Zia<br>Nazwa</div></div>
+        <div class="grid grid-cols-2 py-3 px-3"><div class="font-medium">Jumat</div><div class="whitespace-pre-line">Tio<br>Khaila<br>Imeilda<br>Fela<br>Latifah<br>Dika</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-8 text-sm text-slate-500">
+    © 2026/2027 Kelas 9H SMP N 01 Cimanggu
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('loader').classList.add('hide'), 1600);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    function showPanel(panel) {
+      const struktur = document.getElementById('panel-struktur');
+      const jadwal = document.getElementById('panel-jadwal');
+      const tabS = document.getElementById('tab-struktur');
+      const tabJ = document.getElementById('tab-jadwal');
+
+      if (panel === 'struktur') {
+        struktur.classList.remove('hidden');
+        jadwal.classList.add('hidden');
+        tabS.classList.add('font-bold');
+        tabJ.classList.remove('font-bold');
+      } else {
+        struktur.classList.add('hidden');
+        jadwal.classList.remove('hidden');
+        tabJ.classList.add('font-bold');
+        tabS.classList.remove('font-bold');
+      }
+      document.getElementById('struktur').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function toggleGaleri() {
+      const more = document.getElementById('more-gallery');
+      const btn = document.getElementById('galeri-btn');
+      more.classList.toggle('hidden');
+      btn.textContent = more.classList.contains('hidden') ? 'Lihat gambar lain' : 'Tutup gambar';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
